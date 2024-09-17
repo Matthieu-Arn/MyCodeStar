@@ -78,6 +78,12 @@
 
     <main class="flex-shrink-0 main-bg">
 
+        {% if user.is_authenticated %}
+        <p class="text-end m-3">You are logged in as {{ user.username }}</p>
+        {% else %}
+        <p class="text-end m-3">You are not logged in</p>
+        {% endif %}
+        
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
@@ -88,7 +94,8 @@
     <footer class="footer mt-auto py-3 dark-bg">
         <p class="m-0 text-center text-white">
             {% block copyright %}
-            Made by Code Instituters
+            <!-- Made by Code Instituters -->
+            Copyright MMXXIV Catalaunensis & Code Institute
             {% endblock copyright %}
         </p>
         <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
