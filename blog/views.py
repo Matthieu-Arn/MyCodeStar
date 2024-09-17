@@ -31,7 +31,11 @@ def post_detail(request, slug):
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
     if request.method == "POST":
+        #test1
+        print("Received a POST request")
         comment_form = CommentForm(data=request.POST)
+        #test2
+        print("About to render template")
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.author = request.user
@@ -43,7 +47,7 @@ def post_detail(request, slug):
     )
 
     comment_form = CommentForm()
-
+    
     return render(
         request,
         "blog/post_detail.html",
